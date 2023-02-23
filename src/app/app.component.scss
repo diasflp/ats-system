@@ -3,4 +3,9 @@
     background-color: var(--color-primary-light-95);
     padding: 10px 0;
   }
+
+  .flex-justify-end {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

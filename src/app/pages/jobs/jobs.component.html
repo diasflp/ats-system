@@ -1,4 +1,12 @@
 <po-page-default p-title="Listagem de vagas" class="jobs-content">
+  <div class="flex-justify-end">
+    <po-button
+      p-kind="primary"
+      p-label="Adicionar vaga"
+      (p-click)="modalForm.open()"
+    >
+    </po-button>
+  </div>
   <po-accordion class="jobs-content__accordion">
     <po-accordion-item *ngFor="let item of listJobs" [p-label]="getLabel(item)">
       <span>{{ item.description }}</span>
@@ -37,3 +45,8 @@
   labelButtonDanger="Não"
   (deleteConfirmEvent)="deleteConfirm($event)"
 ></app-modal>
+
+<app-modal-form
+  #modalForm
+  (subitFormEvent)="subitFormEvent($event)"
+></app-modal-form>

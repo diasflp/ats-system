@@ -2,7 +2,6 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -13,7 +12,7 @@ import { PoModalAction, PoModalComponent } from '@po-ui/ng-components';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
   @ViewChild(PoModalComponent, { static: true }) poModal!: PoModalComponent;
 
   @Input() titleModal!: string;
@@ -40,8 +39,6 @@ export class ModalComponent implements OnInit {
   };
 
   constructor() {}
-
-  ngOnInit() {}
 
   closeModal() {
     this.poModal.close();

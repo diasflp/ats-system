@@ -11,6 +11,7 @@ import { JobsServices } from '../../services/jobs/jobs.service';
 })
 export class JobsComponent implements OnInit {
   @ViewChild('modal') modal: any;
+  @ViewChild('modalForm') modalForm: any;
 
   listJobs: Array<IJobs> = [];
 
@@ -38,7 +39,15 @@ export class JobsComponent implements OnInit {
   }
 
   deleteConfirm($event: number) {
-    this.listJobs = this.listJobs.filter((eco) => eco.id !== $event);
+    this.jobsServices.delete($event).subscribe();
     this.modal.closeModal();
+    this.init();
+  }
+
+  async subitFormEvent($event: IJobs) {
+    $event.id = this.listJobs.length + 1;
+    this.jobsServices.post($event).subscribe();
+    this.modalForm.closeModal();
+    this.init();
   }
 }

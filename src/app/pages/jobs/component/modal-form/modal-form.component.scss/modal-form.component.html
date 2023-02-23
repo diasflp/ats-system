@@ -1,0 +1,67 @@
+<po-modal
+  p-title="Adicionar vaga"
+  [p-primary-action]="confirm"
+  [p-secondary-action]="close"
+>
+  <form
+    class="form-jobs"
+    #jobsNgForm="ngForm"
+    [formGroup]="jobsForm"
+    (ngSubmit)="saveForm(jobsForm.value)"
+  >
+    <po-input name="input" p-label="Empresa" formControlName="company">
+    </po-input>
+    <po-input name="input" p-label="Título da vaga" formControlName="title">
+    </po-input>
+    <po-input name="input" p-label="Descrição" formControlName="description">
+    </po-input>
+
+    <ng-container formArrayName="experiencesJobs">
+      <div *ngFor="let item of experiencesJobs.controls; index as i">
+        <ng-container [formGroupName]="i">
+          <po-input
+            name="description"
+            p-label="Experiências"
+            formControlName="description"
+          >
+          </po-input>
+        </ng-container>
+      </div>
+      <po-button
+        p-kind="primary"
+        p-label="Adicionar experiências"
+        (p-click)="addExperiences()"
+      >
+      </po-button>
+    </ng-container>
+
+    <ng-container formArrayName="conditionsJobs">
+      <div *ngFor="let item of conditionsJobs.controls; index as i">
+        <ng-container [formGroupName]="i">
+          <po-input
+            name="description"
+            p-label="Condições/Benefícios"
+            formControlName="description"
+          >
+          </po-input>
+        </ng-container>
+      </div>
+      <po-button
+        p-kind="primary"
+        p-label="Adicionar condições/benefícios"
+        (p-click)="addconditions()"
+      >
+      </po-button>
+    </ng-container>
+  </form>
+  <po-modal-footer [p-disabled-align]="false">
+    <po-button [p-danger]="true" p-label="Cancelar" (p-click)="closeModal()">
+    </po-button>
+    <po-button
+      p-kind="primary"
+      p-label="Salvar"
+      (p-click)="jobsNgForm.ngSubmit.emit()"
+    >
+    </po-button>
+  </po-modal-footer>
+</po-modal>
