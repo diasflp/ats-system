@@ -1,7 +1,22 @@
 .jobs-content {
   &__accordion {
-    span {
+    span,
+    li {
       font-size: 14px;
+    }
+
+    &__infos {
+      padding: 20px 20px 0;
+      border-top: 1px solid #f5f7f9;
+      margin: 20px 0 0;
+
+      span {
+        font-weight: 700;
+      }
+
+      li {
+        margin: 5px 30px;
+      }
     }
 
     &__actions {

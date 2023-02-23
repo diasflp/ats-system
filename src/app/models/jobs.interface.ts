@@ -1,14 +1,10 @@
 export interface IJobs {
+  id: number;
   description: string;
   title: string;
   company: string;
-  profileJobs: Array<IProfile>;
   experiencesJobs: Array<IExperiences>;
   conditionsJobs: Array<IConditions>;
-}
-
-interface IProfile {
-  description: string;
 }
 
 interface IExperiences {
@@ -20,19 +16,19 @@ interface IConditions {
 }
 
 export class Jobs {
+  id: number;
   description: string;
   title: string;
   company: string;
-  profileJobs: Array<IProfile>;
   experiencesJobs: Array<IExperiences>;
   conditionsJobs: Array<IConditions>;
 
   constructor(jobsParameters: IJobs) {
+    this.id = jobsParameters.id;
     this.company = jobsParameters.company;
     this.title = jobsParameters.title;
     this.conditionsJobs = jobsParameters.conditionsJobs;
     this.description = jobsParameters.description;
-    this.profileJobs = jobsParameters.profileJobs;
     this.experiencesJobs = jobsParameters.experiencesJobs;
   }
 }

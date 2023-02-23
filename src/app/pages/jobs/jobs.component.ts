@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+
 import { IJobs } from '../../models/jobs.interface';
 import { JobsServices } from '../../services/jobs/jobs.service';
 
@@ -9,6 +10,8 @@ import { JobsServices } from '../../services/jobs/jobs.service';
   styleUrls: ['./jobs.component.scss'],
 })
 export class JobsComponent implements OnInit {
+  @ViewChild('modal') modal: any;
+
   listJobs: Array<IJobs> = [];
 
   constructor(private jobsServices: JobsServices) {}
@@ -32,5 +35,10 @@ export class JobsComponent implements OnInit {
 
   getLabel(jobs: IJobs) {
     return `${jobs.company} - ${jobs.title}`;
+  }
+
+  deleteConfirm($event: number) {
+    this.listJobs = this.listJobs.filter((eco) => eco.id !== $event);
+    this.modal.closeModal();
   }
 }

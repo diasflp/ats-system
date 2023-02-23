@@ -2,17 +2,10 @@
   "jobs": {
     "data": [
       {
+        "id": 1,
         "company": "Totvs",
         "title": "Desenvolvedor Font-End Sênior",
         "description": "Desenvolvedor Font-End Sênior, temos uma oportunidade para atuação 100% remota e com horário flexível. Venha juntar-se a uma empresa líder de tecnologia do segmento ats, desenvolvendo a plataforma de Inteligência Legal!",
-        "profileJobs": [
-          {
-            "description": "Autonomia e autogerenciamento são fundamentais!"
-          },
-          {
-            "description": "Metodologia ágil de desenvolvimento (Scrum)."
-          }
-        ],
         "experiencesJobs": [
           {
             "description": "Angular v15!"
@@ -37,17 +30,10 @@
         ]
       },
       {
+        "id": 2,
         "company": "Totvs",
         "title": "Desenvolvedor Back-End Sênior",
         "description": "Desenvolvedor Back-End Sênior, temos uma oportunidade para atuação 100% remota e com horário flexível. Venha juntar-se a uma empresa líder de tecnologia do segmento ats, desenvolvendo a plataforma de Inteligência Legal!",
-        "profileJobs": [
-          {
-            "description": "Autonomia e autogerenciamento são fundamentais!"
-          },
-          {
-            "description": "Metodologia ágil de desenvolvimento (Scrum)."
-          }
-        ],
         "experiencesJobs": [
           {
             "description": "Angular v15!"

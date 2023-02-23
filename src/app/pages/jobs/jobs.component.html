@@ -2,10 +2,38 @@
   <po-accordion class="jobs-content__accordion">
     <po-accordion-item *ngFor="let item of listJobs" [p-label]="getLabel(item)">
       <span>{{ item.description }}</span>
+      <div class="jobs-content__accordion__infos">
+        <ul>
+          <span>O que esperamos de você:</span>
+          <li *ngFor="let experiencesJobs of item.experiencesJobs">
+            {{ experiencesJobs.description }}
+          </li>
+        </ul>
+      </div>
+      <div class="jobs-content__accordion__infos">
+        <ul>
+          <span>
+            Fazendo parte do nosso time, você terá os seguintes benefícios:
+          </span>
+          <li *ngFor="let conditionsJobs of item.conditionsJobs">
+            {{ conditionsJobs.description }}
+          </li>
+        </ul>
+      </div>
       <div class="jobs-content__accordion__actions">
-        <po-button p-label="Excluir"> </po-button>
+        <po-button p-label="Excluir" (p-click)="modal.open(item.id)">
+        </po-button>
         <po-button p-label="Editar"> </po-button>
       </div>
     </po-accordion-item>
   </po-accordion>
 </po-page-default>
+
+<app-modal
+  #modal
+  titleModal="Excluir Vaga"
+  descriptionModal="você confirma a exclução dessa vaga?"
+  labelButtonPrimary="Sim"
+  labelButtonDanger="Não"
+  (deleteConfirmEvent)="deleteConfirm($event)"
+></app-modal>

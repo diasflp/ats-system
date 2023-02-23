@@ -1,0 +1,21 @@
+<po-modal
+  [p-title]="titleModal"
+  [p-primary-action]="confirm"
+  [p-secondary-action]="close"
+>
+  <span>{{ descriptionModal }}</span>
+  <po-modal-footer [p-disabled-align]="false">
+    <po-button
+      [p-danger]="true"
+      [p-label]="labelButtonDanger"
+      (p-click)="closeModal()"
+    >
+    </po-button>
+    <po-button
+      p-kind="primary"
+      [p-label]="labelButtonPrimary"
+      (p-click)="deleteConfirm()"
+    >
+    </po-button>
+  </po-modal-footer>
+</po-modal>

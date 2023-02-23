@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
-import { PoAccordionModule } from '@po-ui/ng-components';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { PoAccordionModule } from '@po-ui/ng-components';
+import { PoButtonModule } from '@po-ui/ng-components';
 import { PoModule } from '@po-ui/ng-components';
+
 import { JobsComponent } from './jobs.component';
 import { JobsServices } from '../../services/jobs/jobs.service';
-import { CommonModule } from '@angular/common';
-import { PoButtonModule } from '@po-ui/ng-components';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @NgModule({
-  declarations: [JobsComponent],
+  declarations: [JobsComponent, ModalComponent],
   imports: [
     CommonModule,
     PoModule,
