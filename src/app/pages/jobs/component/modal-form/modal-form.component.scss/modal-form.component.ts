@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -18,6 +24,7 @@ import { IJobs } from '../../../../../models/jobs.interface';
 export class ModalFormComponent {
   @ViewChild(PoModalComponent, { static: true }) poModal!: PoModalComponent;
   @Output() subitFormEvent = new EventEmitter();
+  @Input() job!: IJobs;
 
   jobsForm!: FormGroup;
 
@@ -45,10 +52,17 @@ export class ModalFormComponent {
   }
 
   constructor(private formBuild: FormBuilder) {
+    this.initForm();
+  }
+
+  private initForm() {
+    const company = this.job ? this.job.company : null;
+    const title = this.job ? this.job.title : null;
+    const description = this.job ? this.job.description : null;
     this.jobsForm = this.formBuild.group({
-      company: new FormControl(null, Validators.required),
-      title: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
+      company: new FormControl(company, Validators.required),
+      title: new FormControl(title, Validators.required),
+      description: new FormControl(description, Validators.required),
       experiencesJobs: new FormArray([]),
       conditionsJobs: new FormArray([]),
     });
@@ -62,25 +76,48 @@ export class ModalFormComponent {
   }
 
   saveForm(value: IJobs) {
+    if (this.job) {
+      value.id = this.job.id;
+    }
     if (this.jobsForm.valid) this.subitFormEvent.emit(value);
   }
 
-  open() {
+  open(job: IJobs) {
+    this.job = job;
     this.poModal.open();
+    this.initForm();
   }
 
   addconditions() {
-    const conditionsJobsForm = this.formBuild.group({
-      description: new FormControl(null, Validators.required),
-    });
+    if (this.job) {
+      this.job.conditionsJobs.forEach((eco) => {
+        const conditionsJobsForm = this.formBuild.group({
+          description: new FormControl(eco.description, Validators.required),
+        });
+        this.conditionsJobs.push(conditionsJobsForm);
+      });
+    } else {
+      const conditionsJobsForm = this.formBuild.group({
+        description: new FormControl(null, Validators.required),
+      });
 
-    this.conditionsJobs.push(conditionsJobsForm);
+      this.conditionsJobs.push(conditionsJobsForm);
+    }
   }
 
   addExperiences() {
-    const experiencesJobsForm = this.formBuild.group({
-      description: new FormControl(null, Validators.required),
-    });
-    this.experiencesJobs.push(experiencesJobsForm);
+    if (this.job) {
+      this.job.experiencesJobs.forEach((eco) => {
+        const experiencesJobsForm = this.formBuild.group({
+          description: new FormControl(eco.description, Validators.required),
+        });
+        this.experiencesJobs.push(experiencesJobsForm);
+      });
+    } else {
+      const experiencesJobsForm = this.formBuild.group({
+        description: new FormControl(null, Validators.required),
+      });
+      this.experiencesJobs.push(experiencesJobsForm);
+    }
   }
 }

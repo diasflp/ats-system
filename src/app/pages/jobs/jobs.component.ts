@@ -14,6 +14,7 @@ export class JobsComponent implements OnInit {
   @ViewChild('modalForm') modalForm: any;
 
   listJobs: Array<IJobs> = [];
+  isDetail = false;
 
   constructor(private jobsServices: JobsServices) {}
 
@@ -26,8 +27,11 @@ export class JobsComponent implements OnInit {
     this.listJobs = await lastValueFrom(jobs$);
   }
 
-  details() {
-    alert('details');
+  async details(jobId: number) {
+    this.isDetail = true;
+    const getJob$ = this.jobsServices.getById(jobId);
+    const job = await lastValueFrom(getJob$);
+    this.modalForm.open(job);
   }
 
   remove() {
@@ -45,8 +49,12 @@ export class JobsComponent implements OnInit {
   }
 
   async subitFormEvent($event: IJobs) {
-    $event.id = this.listJobs.length + 1;
-    this.jobsServices.post($event).subscribe();
+    if (this.isDetail) {
+      this.jobsServices.put($event, $event.id).subscribe();
+    } else {
+      $event.id = this.listJobs.length + 1;
+      this.jobsServices.post($event).subscribe();
+    }
     this.modalForm.closeModal();
     this.init();
   }

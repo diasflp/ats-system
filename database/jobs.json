@@ -1,7 +1,6 @@
 {
   "jobs": [
     {
-      "id": 1,
       "company": "Totvs",
       "title": "Desenvolvedor Font-End Sênior",
       "description": "Desenvolvedor Font-End Sênior, temos uma oportunidade para atuação 100% remota e com horário flexível. Venha juntar-se a uma empresa líder de tecnologia do segmento ats, desenvolvendo a plataforma de Inteligência Legal!",
@@ -26,7 +25,8 @@
         {
           "description": "Horário flexível"
         }
-      ]
+      ],
+      "id": 1
     },
     {
       "id": 2,

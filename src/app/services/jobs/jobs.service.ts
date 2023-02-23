@@ -23,11 +23,20 @@ export class JobsServices {
   }
 
   post(data: any): Observable<IJobs[]> {
-    console.log(data);
     return this.http.post(URL, data).pipe(map((response) => []));
   }
 
   delete(idJob: number): Observable<IJobs[]> {
     return this.http.delete(`${URL}/${idJob}`).pipe(map((response) => []));
+  }
+
+  getById(idJob: number): Observable<IJobs> {
+    return this.http
+      .get(`${URL}/${idJob}`)
+      .pipe(map((response) => response as IJobs));
+  }
+
+  put(data: any, idJob: number) {
+    return this.http.put(`${URL}/${idJob}`, data).pipe(map((response) => []));
   }
 }
