@@ -1,0 +1,11 @@
+<po-page-default p-title="Listagem de vagas" class="jobs-content">
+  <po-accordion class="jobs-content__accordion">
+    <po-accordion-item *ngFor="let item of listJobs" [p-label]="getLabel(item)">
+      <span>{{ item.description }}</span>
+      <div class="jobs-content__accordion__actions">
+        <po-button p-label="Excluir"> </po-button>
+        <po-button p-label="Editar"> </po-button>
+      </div>
+    </po-accordion-item>
+  </po-accordion>
+</po-page-default>
