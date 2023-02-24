@@ -10,6 +10,6 @@ Run `npm install` or `npm i`
 
 Run `json-server --watch .\database\db.json` for a db server and `npm run start` for a dev serve. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Running e2e tests
+## Running tests
 
-Run `json-server --watch .\database\jobs.json` for a db server and `npm run coverage` to execute the e2e tests via [Cypress](https://www.cypress.io/).
+Run `json-server --watch .\database\jobs.json` for a db server and `npm run coverage` to execute the tests via [Cypress](https://www.cypress.io/).
