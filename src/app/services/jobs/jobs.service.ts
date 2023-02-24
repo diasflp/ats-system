@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IJobs, Jobs } from '../../models/jobs.interface';
-import { IResponse } from '../../models/response.interface';
 
 const URL = 'http://localhost:3000/jobs';
 

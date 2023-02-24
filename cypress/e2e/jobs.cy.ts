@@ -1,6 +1,7 @@
 describe('Screen Job test', () => {
   it('load component', () => {
     cy.visit('http://localhost:4200/oportunidades');
+    cy.contains('Carregando');
     cy.contains('Listagem de vagas');
   });
 
@@ -32,6 +33,7 @@ describe('Screen Job test', () => {
     conditionsIndex = conditionsIndex + 1;
     cy.get(`input[name="conditions${conditionsIndex}"]`).type('Benefícios 2');
     cy.get('button').contains('Salvar').click();
+    cy.contains('Salvo com sucesso!');
   });
 
   it('checks if the job was create', () => {
@@ -48,6 +50,7 @@ describe('Screen Job test', () => {
     cy.get('input[name="company"]').clear();
     cy.get('input[name="company"]').type('Teste cypress atualizado');
     cy.get('button').contains('Salvar').click();
+    cy.contains('Alteração salva com sucesso!');
   });
 
   it('checks if the job was updated', () => {
@@ -67,5 +70,13 @@ describe('Screen Job test', () => {
   it('checks if the job was deleted', () => {
     cy.visit('http://localhost:4200/oportunidades');
     cy.contains('Teste cypress - Vaga para desenvolvedor').should('not.exist');
+  });
+
+  it('check for a server error message', () => {
+    cy.intercept('GET', 'http://localhost:3000/jobs', { statusCode: 500 }).as(
+      'getServerFailure'
+    );
+    cy.visit('http://localhost:4200/oportunidades');
+    cy.contains('An error occurred');
   });
 });

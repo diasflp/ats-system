@@ -14,7 +14,7 @@ import {
 } from '@angular/forms';
 import { PoModalAction, PoModalComponent } from '@po-ui/ng-components';
 
-import { IJobs } from '../../../../../models/jobs.interface';
+import { IJobs } from '../../../../models/jobs.interface';
 
 @Component({
   selector: 'app-modal-form',

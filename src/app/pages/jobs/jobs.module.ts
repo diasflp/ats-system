@@ -9,7 +9,7 @@ import { PoFieldModule } from '@po-ui/ng-components';
 import { JobsComponent } from './jobs.component';
 import { JobsServices } from '../../services/jobs/jobs.service';
 import { ModalComponent } from '../../component/modal/modal.component';
-import { ModalFormComponent } from './component/modal-form/modal-form.component.scss/modal-form.component';
+import { ModalFormComponent } from './component/modal-form/modal-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
