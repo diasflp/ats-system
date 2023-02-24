@@ -9,18 +9,22 @@
     [formGroup]="jobsForm"
     (ngSubmit)="saveForm(jobsForm.value)"
   >
-    <po-input name="input" p-label="Empresa" formControlName="company">
+    <po-input name="company" p-label="Empresa" formControlName="company">
     </po-input>
-    <po-input name="input" p-label="Título da vaga" formControlName="title">
+    <po-input name="title" p-label="Título da vaga" formControlName="title">
     </po-input>
-    <po-input name="input" p-label="Descrição" formControlName="description">
+    <po-input
+      name="description"
+      p-label="Descrição"
+      formControlName="description"
+    >
     </po-input>
 
     <ng-container formArrayName="experiencesJobs">
       <div *ngFor="let item of experiencesJobs.controls; index as i">
         <ng-container [formGroupName]="i">
           <po-input
-            name="description"
+            [name]="'experiences' + i"
             p-label="Experiências"
             formControlName="description"
           >
@@ -39,7 +43,7 @@
       <div *ngFor="let item of conditionsJobs.controls; index as i">
         <ng-container [formGroupName]="i">
           <po-input
-            name="description"
+            [name]="'conditions' + [i]"
             p-label="Condições/Benefícios"
             formControlName="description"
           >

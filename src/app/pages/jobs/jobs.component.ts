@@ -34,10 +34,6 @@ export class JobsComponent implements OnInit {
     this.modalForm.open(job);
   }
 
-  remove() {
-    alert('remove');
-  }
-
   getLabel(jobs: IJobs) {
     return `${jobs.company} - ${jobs.title}`;
   }
