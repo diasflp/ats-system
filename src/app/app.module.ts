@@ -9,11 +9,13 @@ import { PoNotificationModule } from '@po-ui/ng-components';
 import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { AppHttpInterceptor } from './interceptor/http.interceptor';
+import { ModalModule } from './component/modal/modal.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    ModalModule,
     PoModule,
     HttpClientModule,
     AppRoutingModule,

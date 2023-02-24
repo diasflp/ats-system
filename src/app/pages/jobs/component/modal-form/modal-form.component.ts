@@ -24,8 +24,8 @@ import { IJobs } from '../../../../models/jobs.interface';
 export class ModalFormComponent {
   @ViewChild(PoModalComponent, { static: true }) poModal!: PoModalComponent;
   @Output() subitFormEvent = new EventEmitter();
-  @Input() job!: IJobs;
 
+  job!: IJobs;
   jobsForm!: FormGroup;
 
   close: PoModalAction = {

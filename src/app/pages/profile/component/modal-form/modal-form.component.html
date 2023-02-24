@@ -1,0 +1,50 @@
+<po-modal
+  p-title="Adicionar canditato(a)"
+  [p-primary-action]="confirm"
+  [p-secondary-action]="close"
+>
+  <form
+    class="form-profile"
+    #profileNgForm="ngForm"
+    [formGroup]="profileForm"
+    (ngSubmit)="saveForm(profileForm.value)"
+  >
+    <po-input name="name" p-label="Nome" formControlName="name"> </po-input>
+    <po-input name="email" p-label="E-mail" formControlName="email"> </po-input>
+    <po-input
+      name="description"
+      p-label="Descrição"
+      formControlName="description"
+    >
+    </po-input>
+
+    <ng-container formArrayName="experiencesProfile">
+      <div *ngFor="let item of experiencesProfile.controls; index as i">
+        <ng-container [formGroupName]="i">
+          <po-input
+            [name]="'experiences' + i"
+            p-label="Experiências"
+            formControlName="description"
+          >
+          </po-input>
+        </ng-container>
+      </div>
+      <po-button
+        p-kind="primary"
+        p-label="Adicionar experiências"
+        (p-click)="addExperiences()"
+      >
+      </po-button>
+    </ng-container>
+  </form>
+  <po-modal-footer [p-disabled-align]="false">
+    <po-button [p-danger]="true" p-label="Cancelar" (p-click)="closeModal()">
+    </po-button>
+    <po-button
+      p-kind="primary"
+      p-label="Salvar"
+      (p-click)="profileNgForm.ngSubmit.emit()"
+    >
+    </po-button>
+  </po-modal-footer>
+</po-modal>

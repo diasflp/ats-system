@@ -1,0 +1,9 @@
+.form-profile {
+  padding: 10px;
+
+  ::ng-deep {
+    po-button {
+      margin: 0 0 30px;
+    }
+  }
+}

@@ -29,7 +29,6 @@ export class AppHttpInterceptor implements HttpInterceptor {
         if (evt instanceof HttpResponse) {
           if (evt.body) {
             this._loading.setLoading(false, req.url);
-            console.log(req);
             const message =
               req.method === 'POST'
                 ? 'Salvo com sucesso!'

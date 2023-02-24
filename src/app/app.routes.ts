@@ -6,12 +6,17 @@ const routes: Routes = [
   {
     path: 'oportunidades',
     loadChildren: () =>
-      import('./pages/jobs/jobs.module').then(m => m.JobsModule),
+      import('./pages/jobs/jobs.module').then((m) => m.JobsModule),
+  },
+  {
+    path: 'canditato',
+    loadChildren: () =>
+      import('./pages/profile/profile.module').then((m) => m.ProfileModule),
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
