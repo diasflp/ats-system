@@ -5,6 +5,13 @@ describe('Screen Job test', () => {
     cy.contains('Listagem de vagas');
   });
 
+  it('open modal and check validate form', () => {
+    cy.visit('http://localhost:4200/oportunidades');
+    cy.get('button').contains('Adicionar vaga').click();
+    cy.get('button').contains('Salvar').click();
+    cy.contains('Formulário inválido!');
+  });
+
   it('open accordion and verify infos', () => {
     cy.visit('http://localhost:4200/oportunidades');
     cy.get('button').contains('Totvs - Desenvolvedor Font-End Sênior').click();

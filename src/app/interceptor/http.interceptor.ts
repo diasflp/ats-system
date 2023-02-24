@@ -12,6 +12,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { PoNotificationService } from '@po-ui/ng-components';
 
 import { LoadingService } from '../services/loading.service';
+
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
   constructor(

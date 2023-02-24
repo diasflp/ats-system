@@ -12,7 +12,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { PoModalAction, PoModalComponent } from '@po-ui/ng-components';
+import {
+  PoModalAction,
+  PoModalComponent,
+  PoNotificationService,
+} from '@po-ui/ng-components';
 
 import { IProfile } from '../../../../models/profile.interface';
 
@@ -46,7 +50,10 @@ export class ModalFormComponent {
   get experiencesProfile() {
     return this.profileForm.get('experiencesProfile') as FormArray;
   }
-  constructor(private formBuild: FormBuilder) {
+  constructor(
+    private formBuild: FormBuilder,
+    private poNotificationService: PoNotificationService
+  ) {
     this.initForm();
   }
 
@@ -56,7 +63,7 @@ export class ModalFormComponent {
     const description = this.profile ? this.profile.description : null;
     this.profileForm = this.formBuild.group({
       name: new FormControl(name, Validators.required),
-      email: new FormControl(email, Validators.required),
+      email: new FormControl(email, Validators.email),
       description: new FormControl(description, Validators.required),
       experiencesProfile: new FormArray([]),
     });
@@ -72,7 +79,14 @@ export class ModalFormComponent {
     if (this.profile) {
       value.id = this.profile.id;
     }
-    if (this.profileForm.valid) this.subitFormEvent.emit(value);
+    if (this.profileForm.valid) {
+      this.subitFormEvent.emit(value);
+    } else {
+      const message = this.profileForm.get('email')?.errors?.['email']
+        ? 'E-mail inválido!'
+        : 'Formulário inválido!';
+      this.poNotificationService.error(message);
+    }
   }
 
   open(profile: IProfile) {

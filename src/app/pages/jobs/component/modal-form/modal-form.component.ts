@@ -12,7 +12,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { PoModalAction, PoModalComponent } from '@po-ui/ng-components';
+import {
+  PoModalAction,
+  PoModalComponent,
+  PoNotificationService,
+} from '@po-ui/ng-components';
 
 import { IJobs } from '../../../../models/jobs.interface';
 
@@ -51,7 +55,10 @@ export class ModalFormComponent {
     return this.jobsForm.get('conditionsJobs') as FormArray;
   }
 
-  constructor(private formBuild: FormBuilder) {
+  constructor(
+    private formBuild: FormBuilder,
+    private poNotificationService: PoNotificationService
+  ) {
     this.initForm();
   }
 
@@ -79,7 +86,11 @@ export class ModalFormComponent {
     if (this.job) {
       value.id = this.job.id;
     }
-    if (this.jobsForm.valid) this.subitFormEvent.emit(value);
+    if (this.jobsForm.valid) {
+      this.subitFormEvent.emit(value);
+    } else {
+      this.poNotificationService.error('Formulário inválido!');
+    }
   }
 
   open(job: IJobs) {

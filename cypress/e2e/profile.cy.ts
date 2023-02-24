@@ -5,6 +5,24 @@ describe('Screen Profile test', () => {
     cy.contains('Listagem de canditatos(as)');
   });
 
+  it('open modal and check validate form', () => {
+    cy.visit('http://localhost:4200/canditato');
+    cy.get('button').contains('Adicionar canditato(a)').click();
+    cy.get('button').contains('Salvar').click();
+    cy.contains('Formulário inválido!');
+  });
+
+  it('open modal and check validate email', () => {
+    cy.visit('http://localhost:4200/canditato');
+    cy.get('button').contains('Adicionar canditato(a)').click();
+    cy.get('input[name="name"]').type('Canditato teste cypress');
+    cy.get('input[name="email"]').type('teste');
+    cy.get('input[name="description"]').type('Descrição do canditato');
+    cy.get('input[name="experiences0"]').type('Experiência 1');
+    cy.get('button').contains('Salvar').click();
+    cy.contains('E-mail inválido!');
+  });
+
   it('open accordion and verify infos', () => {
     cy.visit('http://localhost:4200/canditato');
     cy.get('button').contains('Felipe Dias - flp.magno@gmail.com').click();
