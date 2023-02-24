@@ -14,11 +14,24 @@ describe('Screen Job test', () => {
 
   it('open accordion and verify infos', () => {
     cy.visit('http://localhost:4200/oportunidades');
-    cy.get('button').contains('Totvs - Desenvolvedor Font-End Sênior').click();
+    cy.get('button')
+      .contains('Totvs - Desenvolvedor Font-End Sênior | canditatos a vaga - 2')
+      .click();
     cy.contains('O que esperamos de você:');
     cy.contains(
       'Fazendo parte do nosso time, você terá os seguintes benefícios:'
     );
+    cy.contains('Candidatos candidatados a essa vaga:');
+  });
+
+  it('open accordion and verify infos without profile', () => {
+    cy.visit('http://localhost:4200/oportunidades');
+    cy.get('button').contains('Totvs - Desenvolvedor Back-End Sênior').click();
+    cy.contains('O que esperamos de você:');
+    cy.contains(
+      'Fazendo parte do nosso time, você terá os seguintes benefícios:'
+    );
+    cy.contains('Candidatos candidatados a essa vaga:').should('not.exist');
   });
 
   it('open modal and add job', () => {

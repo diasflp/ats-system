@@ -17,13 +17,49 @@
       ],
       "conditionsJobs": [
         {
-          "description": " Remuneração: A combinar - Cooperado"
+          "description": " Remuneração: A combinar"
         },
         {
           "description": "100% Remota"
         },
         {
           "description": "Horário flexível"
+        }
+      ],
+      "profile": [
+        {
+          "id": 1,
+          "name": "Felipe Dias",
+          "email": "flp.magno@gmail.com",
+          "description": "Breve descrição",
+          "experiencesProfile": [
+            {
+              "description": "Angular v15!"
+            },
+            {
+              "description": "TypescriptCSS (scss)"
+            },
+            {
+              "description": "Htmlbootstrap"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Gustavo Dias",
+          "email": "gustavo.magno@gmail.com",
+          "description": "Breve descrição",
+          "experiencesProfile": [
+            {
+              "description": "Angular v15!"
+            },
+            {
+              "description": "TypescriptCSS (scss)"
+            },
+            {
+              "description": "Htmlbootstrap"
+            }
+          ]
         }
       ],
       "id": 1
@@ -46,7 +82,7 @@
       ],
       "conditionsJobs": [
         {
-          "description": " Remuneração: A combinar - Cooperado"
+          "description": " Remuneração: A combinar"
         },
         {
           "description": "100% Remota"

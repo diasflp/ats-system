@@ -35,6 +35,9 @@ export class JobsComponent implements OnInit {
   }
 
   getLabel(jobs: IJobs) {
+    if (jobs.profile)
+      return `${jobs.company} - ${jobs.title} | canditatos a vaga - ${jobs.profile.length}`;
+
     return `${jobs.company} - ${jobs.title}`;
   }
 

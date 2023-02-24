@@ -1,3 +1,5 @@
+import { IProfile } from './profile.interface';
+
 export interface IJobs {
   id: number;
   description: string;
@@ -5,6 +7,7 @@ export interface IJobs {
   company: string;
   experiencesJobs: Array<IExperiences>;
   conditionsJobs: Array<IConditions>;
+  profile: Array<IProfile>;
 }
 
 interface IExperiences {
@@ -22,6 +25,7 @@ export class Jobs {
   company: string;
   experiencesJobs: Array<IExperiences>;
   conditionsJobs: Array<IConditions>;
+  profile: Array<IProfile>;
 
   constructor(jobsParameters: IJobs) {
     this.id = jobsParameters.id;
@@ -30,5 +34,6 @@ export class Jobs {
     this.conditionsJobs = jobsParameters.conditionsJobs;
     this.description = jobsParameters.description;
     this.experiencesJobs = jobsParameters.experiencesJobs;
+    this.profile = jobsParameters.profile;
   }
 }

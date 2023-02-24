@@ -28,6 +28,14 @@
           </li>
         </ul>
       </div>
+      <div class="jobs-content__accordion__infos" *ngIf="item.profile">
+        <ul>
+          <span> Candidatos candidatados a essa vaga: </span>
+          <li *ngFor="let profile of item.profile">
+            {{ profile.name }} - {{ profile.email }}
+          </li>
+        </ul>
+      </div>
       <div class="jobs-content__accordion__actions">
         <po-button p-label="Excluir" (p-click)="modal.open(item.id)">
         </po-button>
