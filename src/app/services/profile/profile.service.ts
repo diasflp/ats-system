@@ -25,17 +25,19 @@ export class ProfileServices {
     return this.http.post(URL, data).pipe(map((response) => []));
   }
 
-  delete(idJob: number): Observable<IProfile[]> {
-    return this.http.delete(`${URL}/${idJob}`).pipe(map((response) => []));
+  delete(idProfile: number): Observable<IProfile[]> {
+    return this.http.delete(`${URL}/${idProfile}`).pipe(map((response) => []));
   }
 
-  getById(idJob: number): Observable<IProfile> {
+  getById(idProfile: number): Observable<IProfile> {
     return this.http
-      .get(`${URL}/${idJob}`)
+      .get(`${URL}/${idProfile}`)
       .pipe(map((response) => response as IProfile));
   }
 
-  put(data: any, idJob: number) {
-    return this.http.put(`${URL}/${idJob}`, data).pipe(map((response) => []));
+  put(data: any, idProfile: number) {
+    return this.http
+      .put(`${URL}/${idProfile}`, data)
+      .pipe(map((response) => []));
   }
 }
